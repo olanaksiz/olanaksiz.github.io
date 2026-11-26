@@ -37,3 +37,6 @@ footer a{color:#D5DEEE}
 .topgrid{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:32px;align-items:center}
 .art{width:100%;height:auto;max-width:480px;justify-self:end}
 @media (max-width:860px){.topgrid{grid-template-columns:minmax(0,1fr)}.art{justify-self:start}}
+.fig{margin:8px 0 24px}
+.fig svg{display:block;width:100%;height:auto;border-radius:12px}
+.fig figcaption{font-size:15px;color:var(--muted);margin-top:8px}
