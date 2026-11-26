@@ -84,6 +84,15 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
 .facts strong{font-family:var(--display);font-style:italic;font-weight:800;font-size:28px;line-height:1.1;color:var(--navy)}
 .facts span{color:var(--muted);font-size:16px}
 @media (max-width:860px){.facts ul{grid-template-columns:minmax(0,1fr)}}
+.form{display:flex;flex-direction:column;gap:14px;background:var(--soft);border:1px solid var(--line);border-radius:12px;padding:22px}
+.form .row{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.form label{display:flex;flex-direction:column;gap:6px;font-weight:600;font-size:15.5px;color:var(--navy)}
+.form input,.form textarea{font:inherit;font-weight:400;color:var(--ink);padding:11px 12px;border:1px solid #B8C3D6;border-radius:8px;background:#fff;width:100%}
+.form input:focus-visible,.form textarea:focus-visible{outline:3px solid var(--accent);outline-offset:1px}
+.form .btn{border:0;cursor:pointer;font:inherit;font-weight:600;justify-content:center}
+.form .err{margin:0;color:#B3261E;font-weight:600}
+.wa .wrap{align-items:start}
+@media (max-width:520px){.form .row{grid-template-columns:minmax(0,1fr)}}
 </style>
 </head>
 <body>
@@ -152,17 +161,25 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
   <div class="wrap">
     <div>
       <p class="eyebrow">İletişim</p>
-      <h2>Bize WhatsApp'tan yazın</h2>
-      <p>Butona bastığınızda yandaki mesaj WhatsApp'ta hazır açılır. Boşlukları doldurup göndermeniz yeterli; size fiyat ve süreyle dönüyoruz.</p>
+      <h2>Teklif formu</h2>
+      <p>Formu doldurun, bilgileriniz WhatsApp mesajı olarak hazırlansın. Size fiyat ve teslim süresiyle dönüyoruz.</p>
       <p class="note">WhatsApp: +971 55 852 1155</p>
     </div>
-    <div class="bubble-wrap">
-      <div class="bubble">Merhaba, Çin'den ürün getirmek istiyorum.
-Ürün: 
-Adet (en az 50): 
-Teslimat şehri: </div>
-      <a class="btn" href="https://wa.me/971558521155?text=Merhaba%2C%20%C3%87in%27den%20%C3%BCr%C3%BCn%20getirmek%20istiyorum.%0A%C3%9Cr%C3%BCn%3A%20%0AAdet%20%28en%20az%2050%29%3A%20%0ATeslimat%20%C5%9Fehri%3A%20"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M12 3a9 9 0 0 0-7.7 13.6L3 21l4.6-1.2A9 9 0 1 0 12 3z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg> Bu mesajla WhatsApp'ı aç</a>
-    </div>
+    <form class="form" id="teklif-formu" novalidate>
+      <div class="row">
+        <label for="f-ad">Ad Soyad<input id="f-ad" name="ad" type="text" autocomplete="name" required></label>
+        <label for="f-tel">Telefon<input id="f-tel" name="tel" type="tel" autocomplete="tel" inputmode="tel" required></label>
+      </div>
+      <label for="f-urun">Ürün<input id="f-urun" name="urun" type="text" placeholder="Örn. telefon kılıfı" required></label>
+      <div class="row">
+        <label for="f-adet">Adet (en az 50)<input id="f-adet" name="adet" type="number" min="50" step="1" inputmode="numeric" required></label>
+        <label for="f-sehir">Teslimat şehri<input id="f-sehir" name="sehir" type="text" autocomplete="address-level1" required></label>
+      </div>
+      <label for="f-not">Notunuz (isteğe bağlı)<textarea id="f-not" name="not" rows="3"></textarea></label>
+      <p class="err" id="f-hata" role="alert" hidden></p>
+      <button class="btn" type="submit"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M12 3a9 9 0 0 0-7.7 13.6L3 21l4.6-1.2A9 9 0 1 0 12 3z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg> Formu WhatsApp'tan gönder</button>
+      <p class="note">Form, yazdıklarınızı WhatsApp mesajı olarak hazırlar; göndermek için WhatsApp'ta "Gönder"e basmanız gerekir.</p>
+    </form>
   </div>
 </section>
 </main>
@@ -174,5 +191,21 @@ Teslimat şehri: </div>
   </div>
 </footer>
 <a class="fab" href="https://wa.me/971558521155?text=Merhaba%2C%20%C3%87in%27den%20%C3%BCr%C3%BCn%20getirmek%20istiyorum.%0A%C3%9Cr%C3%BCn%3A%20%0AAdet%20%28en%20az%2050%29%3A%20%0ATeslimat%20%C5%9Fehri%3A%20" aria-label="WhatsApp'tan yazın"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M12 3a9 9 0 0 0-7.7 13.6L3 21l4.6-1.2A9 9 0 1 0 12 3z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg></a>
+<script>
+(function(){
+  var f=document.getElementById('teklif-formu'), e=document.getElementById('f-hata');
+  f.addEventListener('submit',function(ev){
+    ev.preventDefault();
+    var v=function(n){return f.elements[n].value.trim();};
+    var adet=parseInt(v('adet'),10), msg='';
+    if(!v('ad')||!v('tel')||!v('urun')||!v('sehir')) msg='Lütfen ad, telefon, ürün ve teslimat şehrini doldurun.';
+    else if(!(adet>=50)) msg='Minimum sipariş 50 adettir. Lütfen en az 50 yazın.';
+    if(msg){e.textContent=msg;e.hidden=false;return;}
+    e.hidden=true;
+    var t="Merhaba, Çin'den ürün getirmek istiyorum.\nAd Soyad: "+v('ad')+"\nTelefon: "+v('tel')+"\nÜrün: "+v('urun')+"\nAdet: "+adet+"\nTeslimat şehri: "+v('sehir')+(v('not')?"\nNot: "+v('not'):"");
+    window.location.href='https://wa.me/971558521155?text='+encodeURIComponent(t);
+  });
+})();
+</script>
 </body>
 </html>
