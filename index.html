@@ -99,7 +99,111 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
 .form .err{margin:0;color:#B3261E;font-weight:600}
 .wa .wrap{align-items:start}
 @media (max-width:520px){.form .row{grid-template-columns:minmax(0,1fr)}}
+.faq{margin:32px 0 0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 32px}
+.faq div{background:#fff;border:1px solid var(--line);border-radius:10px;padding:18px 20px}
+.faq dt{font-weight:600;font-size:18px;color:var(--navy);margin-bottom:6px}
+.faq dd{margin:0;color:var(--muted)}
+@media (max-width:860px){.faq{grid-template-columns:minmax(0,1fr)}}
 </style>
+<script type="application/ld+json">
+[
+ {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "@id": "https://cindenkargo.com/#org",
+  "name": "Çinden Kargo",
+  "url": "https://cindenkargo.com/",
+  "logo": "https://cindenkargo.com/favicon.svg",
+  "image": "https://cindenkargo.com/ucak.jpg",
+  "description": "Çin'deki tedarikçinizden kargonuzu adresten alıyor, hava kargo ve gümrük süreçlerini yönetip Türkiye'deki deponuza teslim ediyoruz.",
+  "slogan": "7 günde teslimat",
+  "contactPoint": {
+   "@type": "ContactPoint",
+   "contactType": "customer service",
+   "telephone": "+971558521155",
+   "url": "https://wa.me/971558521155",
+   "availableLanguage": [
+    "tr"
+   ]
+  }
+ },
+ {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Çin'den Türkiye'ye hava kargo",
+  "serviceType": "Hava kargo ve gümrük işlemleri",
+  "provider": {
+   "@id": "https://cindenkargo.com/#org"
+  },
+  "areaServed": {
+   "@type": "Country",
+   "name": "Türkiye"
+  },
+  "description": "Çin'deki tedarikçinizden kargonuzu adresten alıyor, hava kargo ve gümrük süreçlerini yönetip Türkiye'deki deponuza teslim ediyoruz. Teslimat süresi 7 gün, minimum sipariş 50 adet."
+ },
+ {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Çinden Kargo",
+  "url": "https://cindenkargo.com/",
+  "inLanguage": "tr"
+ },
+ {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+   {
+    "@type": "Question",
+    "name": "Çin'den Türkiye'ye teslimat ne kadar sürer?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Hava kargoyla gönderilerinizi 7 günde teslim ediyoruz."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "Minimum sipariş miktarı nedir?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Minimum sipariş miktarı 50 adettir."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "Sonradan ekstra ücret çıkar mı?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Hayır. Size bildirdiğimiz fiyatın üzerine ek ücret çıkmaz."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "Gümrük işlemlerini kim yapıyor?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Gümrük işlemlerini biz tamamlıyoruz; sizin ayrıca uğraşmanız gerekmez."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "Kargoyu Çin'de nereden teslim alıyorsunuz?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Kargonuzu Çin'deki tedarikçinizin adresinden teslim alıyoruz."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "Nasıl teklif alırım?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Sayfadaki teklif formunu doldurun ya da WhatsApp'tan +971 55 852 1155 numarasına yazın. Ürün, adet ve teslimat şehrini bildirmeniz yeterli."
+    }
+   }
+  ]
+ }
+]
+</script>
 </head>
 <body>
 <header>
@@ -163,7 +267,22 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
   </div>
 </section>
 
-<section class="wa">
+<section class="soft" id="sss">
+  <div class="wrap">
+    <p class="eyebrow">Sıkça sorulan sorular</p>
+    <h2>Merak edilenler</h2>
+    <dl class="faq">
+      <div><dt>Çin'den Türkiye'ye teslimat ne kadar sürer?</dt><dd>Hava kargoyla gönderilerinizi 7 günde teslim ediyoruz.</dd></div>
+      <div><dt>Minimum sipariş miktarı nedir?</dt><dd>Minimum sipariş miktarı 50 adettir.</dd></div>
+      <div><dt>Sonradan ekstra ücret çıkar mı?</dt><dd>Hayır. Size bildirdiğimiz fiyatın üzerine ek ücret çıkmaz.</dd></div>
+      <div><dt>Gümrük işlemlerini kim yapıyor?</dt><dd>Gümrük işlemlerini biz tamamlıyoruz; sizin ayrıca uğraşmanız gerekmez.</dd></div>
+      <div><dt>Kargoyu Çin'de nereden teslim alıyorsunuz?</dt><dd>Kargonuzu Çin'deki tedarikçinizin adresinden teslim alıyoruz.</dd></div>
+      <div><dt>Nasıl teklif alırım?</dt><dd>Sayfadaki teklif formunu doldurun ya da WhatsApp'tan +971 55 852 1155 numarasına yazın. Ürün, adet ve teslimat şehrini bildirmeniz yeterli.</dd></div>
+    </dl>
+  </div>
+</section>
+
+<section class="wa" id="iletisim">
   <div class="wrap">
     <div>
       <p class="eyebrow">İletişim</p>
