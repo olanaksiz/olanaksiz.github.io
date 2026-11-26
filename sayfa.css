@@ -34,3 +34,6 @@ footer{background:var(--navy);color:#D5DEEE;padding:28px 0;font-size:15.5px}
 footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 footer a{color:#D5DEEE}
 @media (max-width:700px){.facts,.more ul{grid-template-columns:minmax(0,1fr)}}
+.topgrid{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:32px;align-items:center}
+.art{width:100%;height:auto;max-width:480px;justify-self:end}
+@media (max-width:860px){.topgrid{grid-template-columns:minmax(0,1fr)}.art{justify-self:start}}
