@@ -308,6 +308,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
         <label for="f-tel">Telefon<input id="f-tel" name="tel" type="tel" autocomplete="tel" inputmode="tel" required></label>
       </div>
       <label for="f-urun">Ürün<input id="f-urun" name="urun" type="text" placeholder="Örn. telefon kılıfı" required></label>
+      <label for="f-link">Ürünün satış linki<input id="f-link" name="link" type="url" inputmode="url" placeholder="Ürünün satıldığı sayfanın bağlantısını yapıştırın"></label>
       <div class="row">
         <label for="f-adet">Adet (en az 50)<input id="f-adet" name="adet" type="number" min="50" step="1" inputmode="numeric" required></label>
         <label for="f-sehir">Teslimat şehri<input id="f-sehir" name="sehir" type="text" autocomplete="address-level1" required></label>
@@ -339,7 +340,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
     else if(!(adet>=50)) msg='Minimum sipariş 50 adettir. Lütfen en az 50 yazın.';
     if(msg){e.textContent=msg;e.hidden=false;return;}
     e.hidden=true;
-    var t="Merhaba, Çin'den ürün getirmek istiyorum.\nAd Soyad: "+v('ad')+"\nTelefon: "+v('tel')+"\nÜrün: "+v('urun')+"\nAdet: "+adet+"\nTeslimat şehri: "+v('sehir')+(v('not')?"\nNot: "+v('not'):"");
+    var t="Merhaba, Çin'den ürün getirmek istiyorum.\nAd Soyad: "+v('ad')+"\nTelefon: "+v('tel')+"\nÜrün: "+v('urun')+(v('link')?"\nÜrün linki: "+v('link'):"")+"\nAdet: "+adet+"\nTeslimat şehri: "+v('sehir')+(v('not')?"\nNot: "+v('not'):"");
     window.location.href='https://wa.me/971558521155?text='+encodeURIComponent(t);
   });
 })();
